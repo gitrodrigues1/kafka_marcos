@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: producer-app
+  
+  datasource:
+        url: jdbc:postgresql://localhost:15432/customer_db
+        username: postgres
+        password: pwpostgres!
+  jpa:
+      show-sql: true
+      defer-datasource-initialization: true
+      hibernate:
+          ddl-auto: update
+      properties:
+          hibernate:
+              dialect: org.hibernate.dialect.PostgreSQLDialect
+              format_sql: true
+
+  kafka:
+    producer:
+      bootstrap-servers: 127.0.0.1:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
